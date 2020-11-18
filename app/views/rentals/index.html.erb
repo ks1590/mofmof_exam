@@ -1,2 +1,18 @@
-<h1>Rentals#index</h1>
-<p>Find me in app/views/rentals/index.html.erb</p>
+<h1>物件一覧</h1>
+<table>
+  <tr>
+    <th>物件名</th>
+    <th>賃料</th>
+    <th>住所</th>
+    <th>築年数</th>
+    <th>備考</th>
+  </tr>
+  <%= @rentals.each do |rental| %>
+    <tr>
+      <tr><%= rental.name %><tr>
+      <tr><%= rental.rent %><tr>
+      <tr><%= rental.address %><tr>
+      <tr><%= rental.age %><tr>
+    </tr>
+  <% end %>
+</table>

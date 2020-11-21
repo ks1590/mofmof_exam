@@ -27,11 +27,16 @@ class RentalsController < ApplicationController
   end
 
   def update
-  if @rental.update(rental_params)
-    redirect_to rentals_path, notice: "物件を編集しました！"
-  else
-    render :edit
+    if @rental.update(rental_params)
+      redirect_to rentals_path, notice: "物件を編集しました！"
+    else
+      render :edit
+    end
   end
+  
+  def destroy
+    @rental.destroy
+    redirect_to rentals_path, notice: "物件を削除しました！"
   end
   
 

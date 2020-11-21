@@ -1,11 +1,13 @@
 class RentalsController < ApplicationController
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+
   def index
     @rentals = Rental.all
   end
 
   def new
     @rental = Rental.new
-    @rental.stations.build
+    2.times { @rental.stations.build }
   end
 
   def create
@@ -17,10 +19,18 @@ class RentalsController < ApplicationController
     end
   end
 
+  def show
+    @stations = @rental.stations
+  end
+  
   def edit
   end
 
   private
+  def set_product
+    @rental = Rental.find(params[:id])
+  end
+
   def rentals_params
     params.require(:rental).permit(
       :name,
